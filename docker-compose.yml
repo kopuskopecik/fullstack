@@ -1,0 +1,19 @@
+version: "3.7"
+
+networks:
+  app:
+    name: app
+
+services:
+  djangosite:
+    build:
+      context: ./
+    image: djangosite:1.0.0
+    container_name: djangosite
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./djangosite:/djangosite
+    # env_file:
+    #   - ./.env
