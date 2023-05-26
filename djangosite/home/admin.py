@@ -1,3 +1,9 @@
 from django.contrib import admin
+from home.models import Shopping
 
-# Register your models here.
+
+class ShoppingAdmin(admin.ModelAdmin):
+    list_display  = ["item", "amount", 'status']
+
+
+admin.site.register(Shopping,ShoppingAdmin)
