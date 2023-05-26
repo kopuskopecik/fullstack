@@ -1,9 +1,8 @@
 import { Sequelize, DataTypes } from "sequelize";
-require('dotenv').config();
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
-  host: process.env.HOST,
-  dialect: process.env.DIALECT,
+const sequelize = new Sequelize('EDMG', 'edumago', 'edumago_12', {
+  host: '127.0.0.1',
+  dialect: 'mysql',
   dialectOptions: {},
   define: {
     freezeTableName: true,
@@ -19,6 +18,10 @@ const ShoppingList = sequelize.define("ShoppingList", {
   },
   amount: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  status: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   },
 });

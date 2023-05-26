@@ -22,6 +22,7 @@ const updateShoppingList = async (pId, pShoppingList) => {
     shoppingList.set({
       item: pShoppingList.item,
       amount: pShoppingList.amount,
+      status:pShoppingList.status,
     });
     return await shoppingList.save();
   } catch (error) {
