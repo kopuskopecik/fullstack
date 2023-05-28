@@ -1,14 +1,15 @@
-td, th{
-    vertical-align:middle  !important;
+td,
+th {
+  vertical-align: middle !important;
 }
-span{
-    font-size: 3rem;
+span {
+  font-size: 3rem;
 }
 
 .item {
-    max-width: 70%  !important;
+  max-width: 70% !important;
 }
 
 .amount {
-    max-width: 15%  !important;
+  max-width: 15% !important;
 }
