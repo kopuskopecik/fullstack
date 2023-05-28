@@ -1,5 +1,5 @@
 ### Overview
-This wen application creates, updates and deletes a shopping list.
+This web application creates, updates and deletes a shopping list.
 
 ### Dependencies
 - Docker
