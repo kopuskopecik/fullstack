@@ -18,6 +18,7 @@ async function getApi(pUrl) {
 // post new item
 
 async function postApi(event) {
+  event.preventDefault()
   const postShoppingList = getInputData();
   // get api response
   await fetch(api_url, {
