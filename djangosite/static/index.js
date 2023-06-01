@@ -4,7 +4,8 @@ const input = document.querySelector("input");
 form.addEventListener("submit", postApi);
 
 //api url
-const api_url = "http://localhost:8000/shoppinglists/";
+// const api_url = "http://localhost:8000/shoppinglists/";
+const api_url = "http://ec2-54-174-12-248.compute-1.amazonaws.com:8000/";
 
 // get data from api 
 async function getApi(pUrl) {
