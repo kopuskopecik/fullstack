@@ -77,12 +77,16 @@ WSGI_APPLICATION = 'djangosite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import os
+
+POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+
 DATABASES = {    
    "default": {        
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "NAME": POSTGRES_PASSWORD,
+        "USER": POSTGRES_PASSWORD,
+        "PASSWORD": POSTGRES_PASSWORD,
         "HOST": "db",
         "PORT": 5432,
     }
