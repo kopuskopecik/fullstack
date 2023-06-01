@@ -13,3 +13,10 @@ span {
 .amount {
   max-width: 15% !important;
 }
+
+img{
+  width:40%;
+  filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%) contrast(119%);
+
+}
+
