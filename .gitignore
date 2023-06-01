@@ -1,5 +1,5 @@
 myvenv/
-
+.env
 .vscode/
 settings.json
 # Django #
