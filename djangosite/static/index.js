@@ -3,12 +3,10 @@ const input = document.querySelector("input");
 
 form.addEventListener("submit", postApi);
 
-//api url for userID=1
+//api url
 const api_url = "http://localhost:8000/shoppinglists/";
 
-const post_url = "http://localhost:8000/shoppinglists";
-
-// get data from api with userID=1
+// get data from api 
 async function getApi(pUrl) {
   const response = await fetch(pUrl);
 
@@ -19,11 +17,11 @@ async function getApi(pUrl) {
 // post new item
 
 async function postApi(event) {
-  const postTodo = getInputData();
+  const postShoppingList = getInputData();
   // get api response
   await fetch(api_url, {
     method: "POST",
-    body: JSON.stringify(postTodo),
+    body: JSON.stringify(postShoppingList),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
@@ -53,8 +51,8 @@ const getInputData = () => {
 };
 
 //update item situation
-async function updateTodo(pId, pTitle, pCompleted) {
-  await fetch(`http://localhost:8000/shoppinglists/${pId}/`, {
+async function updateShoppingList(pId, pTitle, pCompleted) {
+  await fetch(`${api_url}${pId}/`, {
     method: "PUT",
     body: JSON.stringify({
       id: pId,
@@ -73,8 +71,8 @@ async function updateTodo(pId, pTitle, pCompleted) {
 
 //delete item with id
 
-async function deleteTodo(pId) {
-  await fetch(`http://localhost:8000/shoppinglists/${pId}`, {
+async function deleteShoppingList(pId) {
+  await fetch(`${api_url}${pId}/`, {
     method: "DELETE",
   });
   getApi(api_url);
@@ -82,9 +80,18 @@ async function deleteTodo(pId) {
 
 // create table for item list
 function render(pData) {
+  const itemCount=pData.length;
+  let inBasket=0;
+  let outBasket=0;
+  
   const tr = pData
     .map(
-      (data, index) => ` 
+      (data, index) => {
+        
+        data.status ? ++inBasket : ++outBasket;
+        
+       
+        return ` 
       <tr class="${data.status == true ? "text-success" : "text-danger"}">
           <th scope="row">
           ${index + 1}
@@ -103,16 +110,16 @@ function render(pData) {
             data.status == true
               ? "fa-circle-minus text-danger"
               : "fa-circle-check text-success"
-          }" onclick="updateTodo(${data.id}, '${data.item}', ${data.status})">
+          }" onclick="updateShoppingList(${data.id}, '${data.item}', ${data.status})">
           </i>
-          <i type="button" class="text-danger fa-sharp fa-solid fa-trash ms-3" onclick= " deleteTodo(${
+          <i type="button" class="text-danger fa-sharp fa-solid fa-trash ms-3" onclick= " deleteShoppingList(${
             data.id
           })">
 
           </i>
         </td>
 
-      </tr>`
+      </tr>`}
     )
     .join("");
 
@@ -127,10 +134,11 @@ function render(pData) {
     </thead>
     <tbody>
         ${tr}
-    </tbody>`;
+    </tbody> 
+    <caption class="text-center fs-2 text-success mt-4">Total items : ${itemCount} in basket :  ${inBasket} <span class="text-danger fs-2">out : ${outBasket} </span> </caption>`;
 
   // Setting innerHTML as table variable
-  document.querySelector("#todo-table").innerHTML = table;
+  document.querySelector("#shopping-list-table").innerHTML = table;
 }
 
 //render all items

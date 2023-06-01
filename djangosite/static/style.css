@@ -1,3 +1,14 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 td,
 th {
   vertical-align: middle !important;
@@ -14,9 +25,25 @@ span {
   max-width: 15% !important;
 }
 
-img{
+header> img{
   width:40%;
   filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%) contrast(119%);
 
 }
+
+main{
+  flex: 80;
+}
+
+footer{
+ height: 20vh !important;
+ background-image: url("./footer.png");
+ background-size: cover;
+ background-repeat: no-repeat;
+ opacity: 0.8;
+ position: sticky;
+ bottom: 0;
+ flex: 10;
+}
+
 
